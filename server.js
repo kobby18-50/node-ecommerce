@@ -28,7 +28,6 @@ import reviewsRoutes from './router/reviewRoutes.js'
 import orderRouter from './router/orderRoutes.js'
 
 // other packages import 
-import morgan from 'morgan'
 import cookieParser from 'cookie-parser'
 import fileUpload from 'express-fileupload'
 
@@ -54,7 +53,7 @@ app.use(xss())
 app.use(mongoSanitize())
 app.use(cors())
 
-app.use(morgan('tiny'))
+
 
 // express.json
 app.use(express.json())
@@ -69,10 +68,6 @@ app.use(express.static('./public'))
 app.use(fileUpload())
 
 // routes
-app.get('/', (req,res) => {
-    console.log(req.signedCookies)
-    res.send('Homepage')
-})
 
 // auth routes
 app.use('/api/v1/auth', authRouter)
